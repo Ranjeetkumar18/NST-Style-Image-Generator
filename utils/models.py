@@ -1,7 +1,8 @@
 import torch.nn as nn
 import torch
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DECODER_PATH = os.path.join(BASE_DIR,"experiment", "final_exp" ,"decoder_1.pth")
 
 
 class VGGEncoder(nn.Module):

@@ -31,12 +31,17 @@ class UploadForm(FlaskForm):
     alpha = FloatField('Alpha', default=1.0)
     submit = SubmitField('Transfer Style')
 
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-encoder = VGGEncoder('vgg_normalised.pth').to(device)
+encoder = VGGEncoder(os.path.join(BASE_DIR, "vgg_normalised.pth")).to(device)
 decoder = Decoder().to(device)
-decoder.load_state_dict(torch.load('C:/Users/DEVENDRA/OneDrive/Desktop/major projects/NST_PROJECT/experiment/final_exp/decoder_1.pth'))
-
+decoder.load_state_dict(torch.load(
+    os.path.join(BASE_DIR, "experiment", "final_exp", "decoder_1.pth"),
+    map_location=device
+))
 encoder.eval()
 decoder.eval()
 
