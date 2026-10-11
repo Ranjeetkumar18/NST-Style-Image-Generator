@@ -1,0 +1,14 @@
+content_data/test2017
+style_data/
+experiment/
+*.pth
+
+__pycache__/
+venv/
+.venv/
+.DS_Store
+**/.DS_Store
+
+# Ignore Python bytecode directories
+__pycache__/
+**/__pycache__/
