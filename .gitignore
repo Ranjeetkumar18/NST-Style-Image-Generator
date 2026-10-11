@@ -1,7 +1,7 @@
 content_data/test2017
 style_data/
 experiment/
-*.pth
+
 
 __pycache__/
 venv/
