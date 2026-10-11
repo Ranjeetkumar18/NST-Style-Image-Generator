@@ -81,8 +81,7 @@ class VGGEncoder(nn.Module):
             nn.ReLU()  # relu5-4
         )
 
-        # Load the pre-trained VGG model weights
-        vgg_path = os.path.join(BASE_DIR, os.path.basename(vgg_path)) 
+        # Load the pre-trained VGG model weights 
         self.vgg.load_state_dict(torch.load(vgg_path,map_location='cpu'))
         self.vgg = nn.Sequential(*list(self.vgg.children())[:31])  # Keep layers up to relu4-1
         enc_layers = list(self.vgg.children())
