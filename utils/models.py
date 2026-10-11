@@ -1,5 +1,7 @@
 import torch.nn as nn
 import torch
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class VGGEncoder(nn.Module):
@@ -79,7 +81,7 @@ class VGGEncoder(nn.Module):
         )
 
         # Load the pre-trained VGG model weights
-
+        vgg_path = os.path.join(BASE_DIR, os.path.basename(vgg_path)) 
         self.vgg.load_state_dict(torch.load(vgg_path,map_location='cpu'))
         self.vgg = nn.Sequential(*list(self.vgg.children())[:31])  # Keep layers up to relu4-1
         enc_layers = list(self.vgg.children())
